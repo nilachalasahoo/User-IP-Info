@@ -1,0 +1,117 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("All Records", "Index", "Address")</li>
+                <li>@Html.ActionLink("Enter Record", "Create", "Address")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+@model IP_Tracking.Models.Address
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error ! : </strong>   @TempData["InfoMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ITR_Section)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ITR_Section)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IP_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IP_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MAC_Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAC_Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Employee_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employee_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IO_Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IO_Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Switchport_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Switchport_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Domain_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Domain_Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" style="margin-left: 103px;" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

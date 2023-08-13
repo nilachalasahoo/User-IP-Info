@@ -1,0 +1,107 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("All Records", "Index", "Address")</li>
+                <li>@Html.ActionLink("Enter Record", "Create", "Address")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+@model IP_Tracking.Models.Address
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error ! : </strong>   @TempData["InfoMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+<div style="margin: auto; margin-top: 5%; padding: 2% 2% 2% 2%; width: 70%; background: rgba(209, 183, 18, 0.539); border-radius: 10px; ">
+    <table style="position:center;margin:auto;">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <tr>
+            <td colspan="4" style="padding-left:2%; font-size:x-large; color:red; text-align:center;"><a href="https://igitsarang.ac.in/" target="_blank"><img src="https://i.ibb.co/QFBv9d3/1670926937557.png" width="8%" /></a>Update The Record</td>
+        </tr>
+        <tr><td colspan="4"><br /></td></tr>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+
+        <tr>
+            <td width="20%">@Html.LabelFor(model => model.ITR_Section, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.ITR_Section)
+            </td>
+
+
+            <td width="20%"> @Html.LabelFor(model => model.IP_Address, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.IP_Address)
+            </td>
+        </tr>
+        <tr>
+            <td width="20%">@Html.LabelFor(model => model.MAC_Address, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.MAC_Address)
+            </td>
+
+
+            <td width="20%">@Html.LabelFor(model => model.Employee_Name, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.Employee_Name)
+            </td>
+        </tr>
+
+        <tr>
+            <td width="20%">@Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.Location)
+            </td>
+
+
+            <td width="20%">@Html.LabelFor(model => model.IO_Number, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.IO_Number)
+            </td>
+        </tr>
+
+        <tr>
+            <td width="20%">@Html.LabelFor(model => model.Switchport_No, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.Switchport_No)
+            </td>
+
+
+            <td width="20%">@Html.LabelFor(model => model.Domain_Name, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+            <td width="30%">
+                @Html.DisplayNameFor(model => model.Domain_Name)
+            </td>
+
+        </tr>
+
+    
+    </table>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

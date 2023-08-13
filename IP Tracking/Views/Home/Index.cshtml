@@ -1,0 +1,45 @@
+﻿@model IP_Tracking.Models.Login
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div style="position: absolute; top: 50%; left: 50%; padding: 5% 2% 5% 2%; transform: translate(-50%, -50%); width: 45%; background: rgb(0,0,0,0.6);
+       border-radius: 10px; box-shadow: 10px 10px 15px rgba(0, 0,  0.05);">
+
+        <div style="text-align:center">
+            <a href="https://igitsarang.ac.in/" target="_blank"><img src="https://i.ibb.co/QFBv9d3/1670926937557.png" width="15%" /></a>
+            <span style="font-size:x-large; color:red;"><b>User Login</b></span>
+        </div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div style="text-align:center; color:white;">
+
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+
+            @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <div style="text-align:center; color:white;">
+
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <div style="text-align:center; color:white;">
+            <input type="submit" value="Login" class="btn btn-default" />
+
+            <h4 style="color:red;">@Html.ViewData["Message"]</h4>
+        </div>
+    </div>
+}
+
+
+
+

@@ -1,0 +1,125 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("All Records", "Index", "Address")</li>
+                <li>@Html.ActionLink("Enter Record", "Create", "Address")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            </ul>
+        </div>
+    </div>
+</div>
+@model IP_Tracking.Models.Address
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Error ! : </strong>   @TempData["InfoMessage"]
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span>&times;</span>
+        </button>
+    </div>
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div style="margin: auto; margin-top: 5%; padding: 2% 2% 2% 2%; width: 70%; background: rgba(209, 183, 18, 0.539); border-radius: 10px; ">
+        <table style="position:center;margin:auto;">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <tr>
+                <td colspan="4" style="padding-left:2%; font-size:x-large; color:red; text-align:center;"><a href="https://igitsarang.ac.in/" target="_blank"><img src="https://i.ibb.co/QFBv9d3/1670926937557.png" width="8%" /></a>Enter New Record</td>
+            </tr>
+            <tr><td colspan="4"><br /></td></tr>
+
+            <tr>
+                <td width="20%">@Html.LabelFor(model => model.ITR_Section, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.DropDownListFor(model => model.ITR_Section, new SelectList(ViewBag.ITRSectionSuggestions), "-- Select ITR Section --", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ITR_Section, "", new { @class = "text-danger" })
+                </td>
+
+                <td width="20%">@Html.LabelFor(model => model.IP_Address, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.IP_Address, new { htmlAttributes = new { @class = "form-control", pattern = @"^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$", title = "Please enter a valid IP address." } })
+                    @Html.ValidationMessageFor(model => model.IP_Address, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td width="20%"> @Html.LabelFor(model => model.MAC_Address, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.MAC_Address, new { htmlAttributes = new { @class = "form-control", pattern = @"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$", title = "Please enter a valid MAC address." } })
+                    @Html.ValidationMessageFor(model => model.MAC_Address, "", new { @class = "text-danger" })
+                </td>
+
+                <td width="20%">@Html.LabelFor(model => model.Employee_Name, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.Employee_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Employee_Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td width="20%">@Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+                </td>
+
+                <td width="20%"> @Html.LabelFor(model => model.IO_Number, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.IO_Number, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.IO_Number, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td width="20%">@Html.LabelFor(model => model.Switchport_No, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.Switchport_No, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Switchport_No, "", new { @class = "text-danger" })
+                </td>
+
+                <td width="20%">@Html.LabelFor(model => model.Domain_Name, htmlAttributes: new { @class = "control-label col-md-2" })</td>
+                <td width="30%">
+                    @Html.EditorFor(model => model.Domain_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Domain_Name, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4"><br /></td>
+            </tr>
+            <tr style="text-align:center;">
+                <td colspan="4"><input type="submit" value="Submit" class="btn btn-primary" /></td>
+            </tr>
+        </table>
+    </div>
+
+
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
